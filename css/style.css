@@ -1,22 +1,14 @@
-.bar {
-    fill: steelblue;
+#map svg {
+    width: 800px;
+    height: 700px;
 }
 
-.bar:hover {
-    fill: brown;
+.cat .head {
+    fill: #fdd;
+    stroke: #333;
 }
 
-.axis, .values {
-    font: 11px sans-serif;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
-
-.x.axis path {
-    display: none;
+.cat line {
+    stroke: #333;
+    stroke-width: 2px;
 }
