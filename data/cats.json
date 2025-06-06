@@ -1,0 +1,72 @@
+[
+  {
+    "city": "Roma",
+    "longevity": 15,
+    "density": 120,
+    "avgKittens": 4,
+    "vetVisitsPerYear": 3
+  },
+  {
+    "city": "Milano",
+    "longevity": 14,
+    "density": 150,
+    "avgKittens": 3.5,
+    "vetVisitsPerYear": 4
+  },
+  {
+    "city": "Napoli",
+    "longevity": 13,
+    "density": 130,
+    "avgKittens": 5,
+    "vetVisitsPerYear": 2
+  },
+  {
+    "city": "Torino",
+    "longevity": 16,
+    "density": 100,
+    "avgKittens": 3,
+    "vetVisitsPerYear": 3
+  },
+  {
+    "city": "Palermo",
+    "longevity": 12,
+    "density": 110,
+    "avgKittens": 4.5,
+    "vetVisitsPerYear": 2.5
+  },
+  {
+    "city": "Genova",
+    "longevity": 17,
+    "density": 90,
+    "avgKittens": 3.8,
+    "vetVisitsPerYear": 3.2
+  },
+  {
+    "city": "Bologna",
+    "longevity": 15.5,
+    "density": 95,
+    "avgKittens": 4.2,
+    "vetVisitsPerYear": 3.5
+  },
+  {
+    "city": "Firenze",
+    "longevity": 14.5,
+    "density": 105,
+    "avgKittens": 3.6,
+    "vetVisitsPerYear": 3
+  },
+  {
+    "city": "Venezia",
+    "longevity": 16.2,
+    "density": 80,
+    "avgKittens": 3.9,
+    "vetVisitsPerYear": 2.8
+  },
+  {
+    "city": "Verona",
+    "longevity": 15.8,
+    "density": 85,
+    "avgKittens": 4.1,
+    "vetVisitsPerYear": 3.1
+  }
+]
