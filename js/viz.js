@@ -123,18 +123,15 @@ function updateDrawing(data){
     //
     var yearNode = svg.selectAll(".year").data([year]);
 
-    // Omitting the exit clause
-
     // Enter year
-    //
-    yearNode.enter().append("text")
-        .attr("class","year")
+    // Merge with update selection so text is set even on the first draw
+    yearNode.enter()
+        .append("text")
+        .attr("class", "year")
         .attr("x", width - margin.right)
-        .attr("y", margin.top);
-
-    // Enter + Update year
-    //
-    yearNode.text(function(d){ return d });
+        .attr("y", margin.top)
+        .merge(yearNode)
+        .text(function(d){ return d });
 
 }
 
