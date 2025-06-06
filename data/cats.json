@@ -1,0 +1,92 @@
+[
+  {
+    "city": "Rome",
+    "lat": 41.9028,
+    "lon": 12.4964,
+    "earLength": 8,
+    "eyeWidth": 5,
+    "headSize": 6,
+    "tailLength": 7
+  },
+  {
+    "city": "Milan",
+    "lat": 45.4642,
+    "lon": 9.19,
+    "earLength": 6,
+    "eyeWidth": 4,
+    "headSize": 5,
+    "tailLength": 8
+  },
+  {
+    "city": "Naples",
+    "lat": 40.8518,
+    "lon": 14.2681,
+    "earLength": 7,
+    "eyeWidth": 6,
+    "headSize": 5,
+    "tailLength": 6
+  },
+  {
+    "city": "Turin",
+    "lat": 45.0703,
+    "lon": 7.6869,
+    "earLength": 5,
+    "eyeWidth": 5,
+    "headSize": 4,
+    "tailLength": 5
+  },
+  {
+    "city": "Palermo",
+    "lat": 38.1157,
+    "lon": 13.3615,
+    "earLength": 9,
+    "eyeWidth": 7,
+    "headSize": 7,
+    "tailLength": 9
+  },
+  {
+    "city": "Genoa",
+    "lat": 44.4056,
+    "lon": 8.9463,
+    "earLength": 5,
+    "eyeWidth": 6,
+    "headSize": 5,
+    "tailLength": 6
+  },
+  {
+    "city": "Bologna",
+    "lat": 44.4949,
+    "lon": 11.3426,
+    "earLength": 6,
+    "eyeWidth": 5,
+    "headSize": 6,
+    "tailLength": 7
+  },
+  {
+    "city": "Florence",
+    "lat": 43.7696,
+    "lon": 11.2558,
+    "earLength": 7,
+    "eyeWidth": 4,
+    "headSize": 6,
+    "tailLength": 8
+  },
+  {
+    "city": "Bari",
+    "lat": 41.1171,
+    "lon": 16.8719,
+    "earLength": 6,
+    "eyeWidth": 5,
+    "headSize": 5,
+    "tailLength": 7
+  },
+  {
+    "city": "Venice",
+    "lat": 45.4408,
+    "lon": 12.3155,
+    "earLength": 5,
+    "eyeWidth": 7,
+    "headSize": 5,
+    "tailLength": 6
+  }
+]

@@ -142,25 +142,141 @@ function redraw(data) {
     updateDrawing(data);
 }
 
+// Old bar chart example left here for reference. It is not executed in the
+// current project but kept to document how the d3 update pattern works.
+/*
 d3.json("data/dataset.json")
-	.then(function(data) {
+        .then(function(data) {
 
-    	// Drawing axes and initial drawing
-    	//
+        // Drawing axes and initial drawing
+        //
         updateYScaleDomain(data[0]);
         updateXScaleDomain(data[0]);
         drawAxes();
-    	updateDrawing(data[0]);
+        updateDrawing(data[0]);
 
-    	var counter = 0;
-    	setInterval(function(){
-       		if (data[counter+1]){
-           		counter++;
-           		redraw(data[counter]);
-       		}
-    	}, delayTime)
-   	})
-	.catch(function(error) {
-		console.log(error); // Some error handling here
-  	});
+        var counter = 0;
+        setInterval(function(){
+                if (data[counter+1]){
+                        counter++;
+                        redraw(data[counter]);
+                }
+        }, delayTime)
+        })
+        .catch(function(error) {
+                console.log(error); // Some error handling here
+        });
+*/
 
+
+window.initViz = function(cats, italy) {
+    var width = 800,
+        height = 600;
+
+    var svg = d3.select('#map').append('svg')
+        .attr('width', width)
+        .attr('height', height);
+
+    var projection = d3.geoMercator()
+        .fitSize([width, height], italy);
+
+    var path = d3.geoPath().projection(projection);
+
+    svg.append('g')
+        .selectAll('path')
+        .data(italy.features)
+        .enter()
+        .append('path')
+        .attr('d', path)
+        .attr('fill', '#eeeeee')
+        .attr('stroke', '#333');
+
+    var earScale = d3.scaleLinear()
+        .domain(d3.extent(cats, d => d.earLength))
+        .range([5, 20]);
+
+    var eyeScale = d3.scaleLinear()
+        .domain(d3.extent(cats, d => d.eyeWidth))
+        .range([2, 8]);
+
+    var headScale = d3.scaleLinear()
+        .domain(d3.extent(cats, d => d.headSize))
+        .range([10, 30]);
+
+    var tailScale = d3.scaleLinear()
+        .domain(d3.extent(cats, d => d.tailLength))
+        .range([10, 40]);
+
+    var catGroups = svg.selectAll('.cat')
+        .data(cats)
+        .enter()
+        .append('g')
+        .attr('class', 'cat')
+        .attr('transform', d => {
+            var p = projection([d.lon, d.lat]);
+            return 'translate(' + p[0] + ',' + p[1] + ')';
+        });
+
+    catGroups.append('circle')
+        .attr('class', 'head')
+        .attr('r', d => headScale(d.headSize))
+        .on('click', () => sortCats('headSize'));
+
+    catGroups.append('line')
+        .attr('class', 'ear left')
+        .attr('x1', d => -headScale(d.headSize)/2)
+        .attr('y1', d => -headScale(d.headSize))
+        .attr('x2', d => -headScale(d.headSize)/2)
+        .attr('y2', d => -headScale(d.headSize) - earScale(d.earLength))
+        .on('click', () => sortCats('earLength'));
+
+    catGroups.append('line')
+        .attr('class', 'ear right')
+        .attr('x1', d => headScale(d.headSize)/2)
+        .attr('y1', d => -headScale(d.headSize))
+        .attr('x2', d => headScale(d.headSize)/2)
+        .attr('y2', d => -headScale(d.headSize) - earScale(d.earLength))
+        .on('click', () => sortCats('earLength'));
+
+    catGroups.append('circle')
+        .attr('class', 'eye left')
+        .attr('cx', d => -headScale(d.headSize)/3)
+        .attr('cy', d => -headScale(d.headSize)/4)
+        .attr('r', d => eyeScale(d.eyeWidth))
+        .on('click', () => sortCats('eyeWidth'));
+
+    catGroups.append('circle')
+        .attr('class', 'eye right')
+        .attr('cx', d => headScale(d.headSize)/3)
+        .attr('cy', d => -headScale(d.headSize)/4)
+        .attr('r', d => eyeScale(d.eyeWidth))
+        .on('click', () => sortCats('eyeWidth'));
+
+    catGroups.append('line')
+        .attr('class', 'tail')
+        .attr('x1', 0)
+        .attr('y1', d => headScale(d.headSize))
+        .attr('x2', 0)
+        .attr('y2', d => headScale(d.headSize) + tailScale(d.tailLength))
+        .on('click', () => sortCats('tailLength'));
+
+    function sortCats(key) {
+        var sorted = cats.slice().sort((a, b) => d3.ascending(a[key], b[key]));
+        var step = width / (cats.length + 1);
+        sorted.forEach((d, i) => {
+            d.sortX = step * (i + 1);
+            d.sortY = height - 40;
+        });
+
+        svg.selectAll('.cat')
+            .transition()
+            .duration(1000)
+            .attr('transform', d => {
+                if (d.sortX !== undefined) {
+                    return 'translate(' + d.sortX + ',' + d.sortY + ')';
+                }
+                var p = projection([d.lon, d.lat]);
+                return 'translate(' + p[0] + ',' + p[1] + ')';
+            });
+    }
+};
