@@ -7,7 +7,7 @@
     "eye_width": 5,
     "head_size": 6,
     "tail_length": 7,
-    "color": "#d4a0ff"
+    "color": "#2176AB"
   },
   {
     "city": "Milan",
@@ -17,7 +17,7 @@
     "eye_width": 4,
     "head_size": 5,
     "tail_length": 8,
-    "color": "#77dd77"
+    "color": "#F97662"
   },
   {
     "city": "Naples",
@@ -27,7 +27,7 @@
     "eye_width": 6,
     "head_size": 5,
     "tail_length": 6,
-    "color": "#aec6cf"
+    "color": "#FC9B31"
   },
   {
     "city": "Turin",
@@ -37,17 +37,17 @@
     "eye_width": 5,
     "head_size": 4,
     "tail_length": 5,
-    "color": "#ffb347"
+    "color": "#FFBF00"
   },
   {
     "city": "Palermo",
     "lat": 38.1157,
     "lon": 13.3615,
     "ear_length": 9,
-    "eye_width": 7,
-    "head_size": 7,
-    "tail_length": 9,
-    "color": "#ffb7ce"
+    "eye_width": 3,
+    "head_size": 8,
+    "tail_length": 5,
+    "color": "#A8C43C"
   },
   {
     "city": "Genoa",
@@ -55,9 +55,9 @@
     "lon": 8.9463,
     "ear_length": 5,
     "eye_width": 6,
-    "head_size": 5,
+    "head_size": 2,
     "tail_length": 6,
-    "color": "#b39eb5"
+    "color": "#50C878"
   },
   {
     "city": "Bologna",
@@ -67,7 +67,7 @@
     "eye_width": 5,
     "head_size": 6,
     "tail_length": 7,
-    "color": "#cff27e"
+    "color": "#B284BE"
   },
   {
     "city": "Florence",
@@ -87,7 +87,7 @@
     "eye_width": 5,
     "head_size": 5,
     "tail_length": 7,
-    "color": "#fdfd96"
+    "color": "#A24806"
   },
   {
     "city": "Venice",
@@ -97,6 +97,6 @@
     "eye_width": 7,
     "head_size": 5,
     "tail_length": 6,
-    "color": "#cfcfc4"
+    "color": "#444"
   }
 ]

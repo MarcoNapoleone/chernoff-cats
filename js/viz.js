@@ -5,6 +5,14 @@ const rawSvg = `
 <rect width="256" height="256" fill="#1E1E1E"/>
 <rect width="256" height="256" fill="white"/>
 
+<!-- def gaussian blur -->
+<defs>
+  <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+  </filter>
+</defs>
+<ellipse cx="128" cy="217" rx="75" ry="15" fill="rgba(0, 0, 0, 0.07)" filter="url(#blur)"/>
+
 <!-- raggruppo e traslo di 17px a destra per centrare il gatto -->
 <g transform="translate(10, 15)">
 
