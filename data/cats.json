@@ -1,6 +1,6 @@
 [
   {
-    "city": "Rome",
+    "city": "Roma",
     "lat": 41.9028,
     "lon": 12.4964,
     "ear_length": 8,
@@ -10,7 +10,7 @@
     "color": "#2176AB"
   },
   {
-    "city": "Milan",
+    "city": "Milano",
     "lat": 45.4642,
     "lon": 9.19,
     "ear_length": 6,
@@ -20,7 +20,7 @@
     "color": "#F97662"
   },
   {
-    "city": "Naples",
+    "city": "Napoli",
     "lat": 40.8518,
     "lon": 14.2681,
     "ear_length": 7,
@@ -30,7 +30,7 @@
     "color": "#FC9B31"
   },
   {
-    "city": "Turin",
+    "city": "Torino",
     "lat": 45.0703,
     "lon": 7.6869,
     "ear_length": 5,
@@ -50,7 +50,7 @@
     "color": "#A8C43C"
   },
   {
-    "city": "Genoa",
+    "city": "Genova",
     "lat": 44.4056,
     "lon": 8.9463,
     "ear_length": 5,
@@ -70,7 +70,7 @@
     "color": "#B284BE"
   },
   {
-    "city": "Florence",
+    "city": "Firenze",
     "lat": 43.7696,
     "lon": 11.2558,
     "ear_length": 7,
@@ -90,7 +90,7 @@
     "color": "#A24806"
   },
   {
-    "city": "Venice",
+    "city": "Venezia",
     "lat": 45.4408,
     "lon": 12.3155,
     "ear_length": 5,

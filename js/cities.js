@@ -93,7 +93,7 @@ const width   = vb[2];
 const height  = vb[3];
 
 const ROWS    = 2;          // → cats will fill at most two rows
-const PAD_X   = 30;
+const PAD_X   = 20;
 const PAD_Y   = 20;
 
 let spacingX, spacingY, baseScale, catsPerRow, catHeight;
@@ -103,8 +103,8 @@ let spacingX, spacingY, baseScale, catsPerRow, catHeight;
 // -----------------------------------------------------------------------------
 const scaleSpecs = {
   ear_length : [0.6, 1.5],
-  eye_width  : [0.6, 1.5],
-  head_size  : [0.8, 1.1],
+  eye_width  : [0.5, 1.5],
+  head_size  : [0.7, 1.1],
   tail_length: [0.5, 1.8]
 };
 const scales = {};
@@ -138,7 +138,7 @@ d3.json('data/cats.json').then(data => {
   catsPerRow = Math.ceil(data.length / ROWS);
   spacingX   = (width  - PAD_X*2) / catsPerRow;
   spacingY   = (height - PAD_Y*2) / ROWS;
-  baseScale  = Math.min((spacingX*0.7)/214, (spacingY*0.7)/214); // 80 % cell
+  baseScale  = Math.min((spacingX*0.7)/200, (spacingY*0.7)/200); 
   catHeight  = 214 * baseScale;
 
   // ── Feature‑specific scales ────────────────────────────────────────────────
