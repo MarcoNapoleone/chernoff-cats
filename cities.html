@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>Chernoff Cats – IVG Demo</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+<h2>Gatti nelle città italiane</h3>
+<p>Questo esempio utilizza dati fittizi per rappresentare le caratteristiche dei gatti in diverse città italiane. Le slider controllano le dimensioni delle parti del corpo del gatto, che rappresentano vari aspetti della popolazione felina in ciascuna città.</p>
+
+<!-- pulsante per home -->
+<p><a href="index.html">Torna alla pagina principale</a></p>
+
+<!-- legenda -->
+<div id="legend">
+  <p><strong>Legenda:</strong></p>
+  <ul>
+    <li><strong>Orecchie</strong>: Longevità media dei gatti in anni</li>
+    <li><strong>Occhi</strong>: Densità di gatti per km²</li>
+    <li><strong>Testa</strong>: Numero medio di cuccioli per gatta</li>
+    <li><strong>Coda</strong>: Numero medio di visite veterinarie annuali</li>
+  </ul>
+</div>
+
+<!-- Canvas unico per i 10 gatti delle città -->
+<div id="cats-container">
+  <svg id="cats-grid" width="99%" height="256px" viewBox="0 0 1000 480" xmlns="http://www.w3.org/2000/svg" aria-labelledby="titleGrid descGrid">
+    <title id="titleGrid">Gatti Chernoff per 10 città italiane</title>
+    <desc id="descGrid">Ogni glifo gatto rappresenta quattro variabili demografiche feline: longevità, densità, cuccioli per gatta e visite veterinarie.</desc>
+    <!-- I gruppi <g> per ogni città verranno creati via JavaScript in viz.js -->
+  </svg>
+</div>
+
+<!-- footer -->
+<footer>
+  <p>Realizzato da <a href="" target="_blank">Marco Napoleone</a></p>
+</footer>
+
+
+<!-- JavaScript -->
+<script src="js/cities.js"></script>
+</body>
+</html>

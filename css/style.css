@@ -13,15 +13,12 @@
   /* ---------------- UI layout ---------------- */
   #ui{
     display:grid;
-    grid-template-columns:max-content 1fr max-content; /* etichette | slider | valore */
     gap:.5rem 1rem;
-    align-items:center;
-    width:26rem;
+    width:16rem;
   }
 
   /* ---------------- slider giallo ---------------- */
   input[type=range]{
-    width:100%;
     /* modern browsers */
     accent-color:var(--cat-yellow);
     /* firefox <98 cade sul fallback default */
@@ -42,7 +39,6 @@
     border-radius:50%;
     background:var(--cat-yellow);
     border:2px solid #fff;
-    margin-top:-4px;          /* centra il thumb sulla track */
   }
   /* firefox */
   input[type=range]::-moz-range-track{
@@ -58,15 +54,31 @@
     border:2px solid #fff;
   }
 
-  /* numerino */
-  .value{
-    font-variant-numeric:tabular-nums;
-    min-width:2.2ch;
-    text-align:right;
-  }
 
   svg{
     border:1px solid #ddd;
     display:block;
+    border-radius: 16px;
     margin-bottom:1.5rem;
+  }
+
+  /* footer in the bottom */
+  footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:1rem 0;
+    background:#fafafa;
+    border-top:1px solid #ddd;
+    text-align:center;
+    font-size:.8rem;
+    color:#666;
+    font-family:monospace;
+    z-index:100;
+    box-shadow:0 -2px 4px rgba(0,0,0,.1); 
+  }
+
+  .footer-placeholder {
+    height:rem;
   }

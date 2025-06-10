@@ -4,55 +4,34 @@
   <meta charset="utf-8">
   <title>Chernoff Cats – IVG Demo</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <style>
-    body {font-family:sans-serif;margin:0;padding:2rem;background:#fafafa}
-    #ui {display:grid;grid-template-columns:max-content 1fr;gap:.5rem 1rem;width:20rem}
-    input[type=range] {width:100%}
-    svg {border:1px solid #ddd;display:block;margin-bottom:1.5rem}
-    #cats-container {overflow-x:auto}
-    #cats-grid {max-width:100%;height:auto}
-    text.city-label {font-size:12px;text-anchor:middle;dominant-baseline:hanging}
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <h1>Chernoff Cat plot</h1>
-<p>Un plot di Chernoff è un modo per visualizzare i dati multivariati in cui le caratteristiche di un oggetto (in questo caso un gatto) sono rappresentate da diverse parti del corpo. Le dimensioni e le proporzioni delle parti del corpo cambiano in base ai valori dei dati.</p>
+<p>Un plot di <a href="https://en.wikipedia.org/wiki/Chernoff_face" target="_blank">Chernoff</a> è un modo per visualizzare i dati multivariati in cui le caratteristiche di un oggetto (in questo caso un gatto) sono codificate nelle dimensioni e nelle proporzioni  Le dimensioni e le proporzioni delle parti del corpo cambiano in base ai valori dei dati.</p>
+<!-- Link alla pagina delle città -->
+<p>Per vedere altri gatti, visita la <a href="cities.html">pagina delle città</a>.</p>
+
 <p>In questo esempio, le dimensioni delle orecchie, degli occhi, della testa e della coda di un gatto sono controllate da slider. Modificando i valori degli slider, puoi vedere come cambia l'aspetto del gatto.</p>
 
-<!-- Gatto principale controllato dagli slider -->
-<svg id="cat" width="214" height="214" viewBox="0 0 214 214" xmlns="http://www.w3.org/2000/svg"></svg>
-
-<!-- Sliders -->
-<div id="ui">
-  <label for="sl-ear">Orecchie</label><input id="sl-ear"  type="range" min="1" max="100" value="50">
-  <label for="sl-eye">Occhi</label><input id="sl-eye"  type="range" min="1" max="100" value="50">
-  <label for="sl-head">Testa</label><input id="sl-head" type="range" min="1" max="100" value="50">
-  <label for="sl-tail">Coda</label><input id="sl-tail" type="range" min="1" max="100" value="50">
+<!-- Gatto principale controllato dagli slider e UI affiancati -->
+<div style="display: flex; align-items: flex-start; gap: 32px;">
+  <svg id="cat" width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div id="ui" style="display: flex; flex-direction: column; gap: 12px;">
+    <label for="sl-ear">Orecchie</label><input id="sl-ear"  type="range" min="1" max="100" value="50">
+    <label for="sl-eye">Occhi</label><input id="sl-eye"  type="range" min="1" max="100" value="50">
+    <label for="sl-head">Testa</label><input id="sl-head" type="range" min="1" max="100" value="50">
+    <label for="sl-tail">Coda</label><input id="sl-tail" type="range" min="1" max="100" value="50">
+  </div>
 </div>
 <br>
-<h3>Gatti nelle città italiane</h3>
-<p>Questo esempio utilizza dati fittizi per rappresentare le caratteristiche dei gatti in diverse città italiane. Le slider controllano le dimensioni delle parti del corpo del gatto, che rappresentano vari aspetti della popolazione felina in ciascuna città.</p>
 
-<!-- legenda -->
-<div id="legend">
-  <p><strong>Legenda:</strong></p>
-  <ul>
-    <li><strong>Orecchie</strong>: Longevità media dei gatti in anni</li>
-    <li><strong>Occhi</strong>: Densità di gatti per km²</li>
-    <li><strong>Testa</strong>: Numero medio di cuccioli per gatta</li>
-    <li><strong>Coda</strong>: Numero medio di visite veterinarie annuali</li>
-  </ul>
-</div>
+<!-- footer -->
+<footer>
+  <p>Realizzato da <a href="" target="_blank">Marco Napoleone</a></p>
+</footer>
 
-<!-- Canvas unico per i 10 gatti delle città -->
-<div id="cats-container">
-  <svg id="cats-grid" width="98%" height="480" viewBox="0 0 1000 480" xmlns="http://www.w3.org/2000/svg" aria-labelledby="titleGrid descGrid">
-    <title id="titleGrid">Gatti Chernoff per 10 città italiane</title>
-    <desc id="descGrid">Ogni glifo gatto rappresenta quattro variabili demografiche feline: longevità, densità, cuccioli per gatta e visite veterinarie.</desc>
-    <!-- I gruppi <g> per ogni città verranno creati via JavaScript in viz.js -->
-  </svg>
-</div>
 
 <!-- JavaScript -->
 <script src="js/viz.js"></script>
