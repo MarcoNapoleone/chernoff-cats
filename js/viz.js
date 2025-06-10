@@ -11,29 +11,27 @@ const rawSvg = `
     <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
   </filter>
 </defs>
-<ellipse cx="128" cy="217" rx="75" ry="15" fill="rgba(0, 0, 0, 0.07)" filter="url(#blur)"/>
+<ellipse cx="128" cy="217" rx="75" ry="15" fill="rgba(0, 0, 0, 0.08)" filter="url(#blur)"/>
 
 <!-- raggruppo e traslo di 17px a destra per centrare il gatto -->
 <g transform="translate(10, 15)">
 
   <!-- ------------- TESTA ------------- -->
   <g id="head">
-    <circle cx="77.384" cy="79.8063" r="47.3867" fill="#FCC058"/>
-
     <!-- ------------- ORECCHIE ------------- -->
     <g id="ears">
       <g id="earLeft">
-        <path d="M37.8372 20.573L67.8669 37.9108L37.8372 55.2486V20.573Z" fill="#FCC058"/>
+        <path d="M37.8372 20.573L67.8669 37.9108L37.8372 55.2486V20.573Z" fill="#b77024"/>
         <path d="M54.6276 37.9111L44.456 43.7837L44.4554 32.0386L54.6276 37.9111Z"
               fill="white" stroke="black" stroke-width="2"/>
       </g>
       <g id="earRight">   
-        <path d="M116.931 20.573L86.9013 37.9108L116.931 55.2486V20.573Z" fill="#FCC058"/>
+        <path d="M116.931 20.573L86.9013 37.9108L116.931 55.2486V20.573Z" fill="#b77024"/>
         <path d="M100.14 37.9111L110.312 43.7837L110.313 32.0386L100.14 37.9111Z"
               fill="white" stroke="black" stroke-width="2"/>
       </g>
     </g>
-
+    <circle cx="77.384" cy="79.8063" r="47.3867" fill="#fc9b31"/>
     <!-- maschere + bocca -->
     <defs>
       <mask id="mouthLeftMask" fill="white">
@@ -76,23 +74,26 @@ const rawSvg = `
   <!-- ------------- CODA ------------- -->
   <g id="tail">
     <rect x="173.989" y="92.2574" width="13.9589" height="36.5317"
-          rx="6.97944" fill="#FCC058"/>
+          rx="6.97944" fill="#fc9b31"/>
   </g>
 
   <!-- corpo e zampe -->
-  <rect x="52.9147" y="130.992" width="140.586" height="41.5093" rx="20.7546" fill="#FCC058"/>
-  <rect width="13.9589" height="42.182" rx="6.97944"
-        transform="matrix(-1 0 0 1 79.6456 161.255)" fill="#FCC058"/>
+   <rect width="13.9589" height="42.182" rx="6.97944"
+        transform="matrix(-1 0 0 1 79.6456 161.255)" fill="#eb902e"/>
   <rect width="13.9589" height="37.1116" rx="6.97944"
-        transform="matrix(-1 0 0 1 97.4032 161.255)" fill="#FCC058"/>
+        transform="matrix(-1 0 0 1 97.4032 161.255)" fill="#b77024"/>
   <rect width="13.9589" height="42.182" rx="6.97944"
-        transform="matrix(-1 0 0 1 163.017 161.255)" fill="#FCC058"/>
+        transform="matrix(-1 0 0 1 163.017 161.255)" fill="#eb902e"/>
   <rect width="13.9589" height="37.1116" rx="6.97944"
-        transform="matrix(-1 0 0 1 180.774 161.255)" fill="#FCC058"/>
+        transform="matrix(-1 0 0 1 180.774 161.255)" fill="#b77024"/>
+  <rect x="52.9147" y="130.992" width="140.586" height="41.5093" rx="20.7546" fill="#eb902e"/>
+ 
 
   <!-- stellina decorativa -->
   <path d="M183.322 156.164L183.413 153.664L181.299 155.005L180.754 154.051L182.981 152.891L180.754 151.732L181.299 150.778L183.413 152.119L183.322 149.619H184.413L184.322 152.119L186.436 150.778L186.981 151.732L184.754 152.891L186.981 154.051L186.436 155.005L184.322 153.664L184.413 156.164H183.322Z"
         fill="black"/>
+
+
 </g>
 `;
 

@@ -93,7 +93,7 @@ const width   = vb[2];
 const height  = vb[3];
 
 const ROWS    = 2;          // → cats will fill at most two rows
-const PAD_X   = 30;
+const PAD_X   = 20;
 const PAD_Y   = 20;
 
 let spacingX, spacingY, baseScale, catsPerRow, catHeight;
@@ -103,8 +103,8 @@ let spacingX, spacingY, baseScale, catsPerRow, catHeight;
 // -----------------------------------------------------------------------------
 const scaleSpecs = {
   ear_length : [0.6, 1.5],
-  eye_width  : [0.6, 1.5],
-  head_size  : [0.8, 1.1],
+  eye_width  : [0.5, 1.5],
+  head_size  : [0.7, 1.1],
   tail_length: [0.5, 1.8]
 };
 const scales = {};
@@ -136,9 +136,9 @@ d3.json('data/cats.json').then(data => {
 
   // ── Layout metrics ─────────────────────────────────────────────────────────
   catsPerRow = Math.ceil(data.length / ROWS);
-  spacingX   = (width  - PAD_X*2) / catsPerRow;
+  spacingX   = (width  - PAD_X*2) / catsPerRow -20;
   spacingY   = (height - PAD_Y*2) / ROWS;
-  baseScale  = Math.min((spacingX*0.7)/214, (spacingY*0.7)/214); // 80 % cell
+  baseScale  = Math.min((spacingX*0.7)/200, (spacingY*0.7)/214); 
   catHeight  = 214 * baseScale;
 
   // ── Feature‑specific scales ────────────────────────────────────────────────
@@ -152,7 +152,7 @@ d3.json('data/cats.json').then(data => {
   data.forEach((d,i) => {
     const row = Math.floor(i / catsPerRow);
     const col = i % catsPerRow;
-    d.x = PAD_X + col * spacingX + spacingX/2;
+    d.x = PAD_X + col * spacingX + spacingX/2 -10; // +10 for padding
     d.y = PAD_Y + row * spacingY + spacingY/2 - catHeight/2; // top‑left of glyph
   });
 
@@ -230,8 +230,13 @@ d3.json('data/cats.json').then(data => {
         .attr('font-size',16)
         .attr('fill','#333')
         .text(d=>d.city)
-        .attr('x', d=>d.x + (spacingX/2 ? 0 : 0))  // centred horizontally
-        .attr('y', d=>d.y + catHeight + 24);
+        // position labels below each cat (centered under each cat)
+        .attr('x', function(d) {
+          textWidth = this.getBBox().width;
+          // Center the label under the cat
+          return d.x + spacingX/2 - textWidth/2 + 8; // +10 for padding
+        })
+        .attr('y', d=>d.y + catHeight + 38);
 
   // --- Interactive sorting --------------------------------------------------
   function setupSorting(sel, key) {
@@ -248,7 +253,7 @@ d3.json('data/cats.json').then(data => {
     data.forEach((d,i) => {
       const row = Math.floor(i / catsPerRow);
       const col = i % catsPerRow;
-      d.x = PAD_X + col * spacingX + spacingX/2;
+      d.x = PAD_X + col * spacingX + spacingX/2 - 8; // +10 for padding
       d.y = PAD_Y + row * spacingY + spacingY/2 - catHeight/2;
     });
 
@@ -264,7 +269,12 @@ d3.json('data/cats.json').then(data => {
       .transition()
       .duration(1000)
       .ease(d3.easeCubic)
-      .attr('x', d=>d.x)
-      .attr('y', d=>d.y + catHeight + 24);
+        // position labels below each cat (centered under each cat)
+      .attr('x', function(d) {
+          textWidth = this.getBBox().width;
+          // Center the label under the cat
+          return d.x + spacingX/2 - textWidth/2 + 8; // +10 for padding
+        })   
+           .attr('y', d=>d.y + catHeight + 38);
   }
 });
