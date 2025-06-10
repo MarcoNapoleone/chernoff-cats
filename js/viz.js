@@ -1,166 +1,179 @@
-/**
- * Created by vdidonato on 3/24/14.
- * Updated to v5 by titto on 4/22/20.
- */
+// ---------------------------------------------------------------------------
+// 1.  Inseriamo l’SVG (gruppi già etichettati con ID utili a D3)
+// ---------------------------------------------------------------------------
+const rawSvg = `
+<rect width="214" height="214" fill="#1E1E1E"/>
+<rect width="214" height="214" fill="white"/>
 
-var delayTime = 2000, // time between the picture of one year and the next
-    updateTime = 500; // time for transitions
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40}; // to memorize the margins
+<!-- ------------- TESTA ------------- -->
+<g id="head">
+  <circle cx="77.384" cy="79.8063" r="47.3867" fill="#FCC058"/>
 
-// screen is 800 x 300
-// actual drawing leaves a margin around
-// width and height are the size of the actual drawing
-//
-var width = 800 - margin.left - margin.right;
-var height = 300 - margin.top - margin.bottom;
+  <!-- ------------- ORECCHIE ------------- -->
+<g id="ears">
+  <g id="earLeft">
+    <path d="M37.8372 20.573L67.8669 37.9108L37.8372 55.2486V20.573Z" fill="#FCC058"/>
+    <path d="M54.6276 37.9111L44.456 43.7837L44.4554 32.0386L54.6276 37.9111Z"
+          fill="white" stroke="black" stroke-width="2"/>
+  </g>
+  <g id="earRight">   
+    <path d="M116.931 20.573L86.9013 37.9108L116.931 55.2486V20.573Z" fill="#FCC058"/>
+    <path d="M100.14 37.9111L110.312 43.7837L110.313 32.0386L100.14 37.9111Z"
+          fill="white" stroke="black" stroke-width="2"/>
+  </g>
+</g>
 
-// x is the scale for x-axis
-// domain is not given here but it is updated by updateXScaleDomain()
-// 
-var xScale = d3.scaleBand()         // ordinal scale
-               .rangeRound([10, width])    // leaves 10 pixels for the y-axis
-               .padding(.1);               // between the bands
-                                    // xScale.bandwidth() will give the width of each band
-                                    // xScale(value) will give the x-coordinate for that value
+  <!-- maschere + bocca -->
+  <defs>
+    <mask id="mouthLeftMask" fill="white">
+      <path d="M64.3442 79.8063c0 3.137-1.246 6.145-3.464 8.363-2.218 2.218-5.226
+               3.464-8.363 3.464s-6.145-1.246-8.363-3.464c-2.218-2.218-3.464-5.226-3.464-8.363h23.654Z"/>
+    </mask>
+    <mask id="mouthRightMask" fill="white">
+      <path d="M114.08 79.8063c0 3.137-1.246 6.145-3.464 8.363-2.218 2.218-5.226
+               3.464-8.363 3.464s-6.145-1.246-8.363-3.464c-2.218-2.218-3.464-5.226-3.464-8.363h23.654Z"/>
+    </mask>
+  </defs>
 
-// y is the scale for y-axis
-// domain is not given here but it is updated by updateYScaleDomain()
-//
-var yScale = d3.scaleLinear().range([height, 0]);
+  <!-- baffi / naso -->
+  <line x1="46.3029" y1="107.637" x2="108.983" y2="107.637"
+        stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0.5" y1="-0.5" x2="62.2445" y2="-0.5"
+        transform="matrix(0.97503 -0.222072 -0.34418 -0.938904 47.0542 113.96)"
+        stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="0.5" y1="-0.5" x2="62.2445" y2="-0.5"
+        transform="matrix(0.97503 0.222072 -0.34418 0.938904 47.0542 101.17)"
+        stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="77.423" y1="107.529" x2="77.423" y2="114.041" stroke="black"
+        stroke-linecap="round"/>
+  <path d="M78.01 105.873c-.366.294-.886.294-1.252 0l-1.804-1.448c-.736-.592-.318-1.78.626-1.78h3.61c.944 0 1.362
+           1.188.626 1.78l-1.806 1.448Z" fill="black" stroke="black"/>
+  <path d="M72.8598 113.293c3.363 2.26 7.433.941 9.047 0" stroke="black"
+        stroke-linecap="round"/>
+</g>
 
-var xAxis = d3.axisBottom(xScale);  		// Bottom = ticks below
-var yAxis = d3.axisLeft(yScale).ticks(10);   // Left = ticks on the left 
+<!-- ------------- OCCHI ------------- -->
+<g id="eyes">
+    <path d="M64.3442 79.8063c0 3.137-1.246 6.145-3.464 8.363-2.218 2.218-5.226
+           3.464-8.363 3.464s-6.145-1.246-8.363-3.464c-2.218-2.218-3.464-5.226-3.464-8.363h23.654Z"
+        fill="white" stroke="black" stroke-width="4" mask="url(#mouthLeftMask)"/>
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)     // i.e., 800 again 
-    .attr("height", height + margin.top + margin.bottom)   // i.e., 300 again
-    .append("g")                                           // g is a group
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");                                                    
+    <path d="M114.08 79.8063c0 3.137-1.246 6.145-3.464 8.363-2.218 2.218-5.226
+           3.464-8.363 3.464s-6.145-1.246-8.363-3.464c-2.218-2.218-3.464-5.226-3.464-8.363h23.654Z"
+        fill="white" stroke="black" stroke-width="4" mask="url(#mouthRightMask)"/>
+</g>
 
-// Parameter data is the object containing the values for a specific year
-// it has two fields: data.year (a number) and data.ageGroups (an array).
-// Each element d of data.ageGroups[] has d.ageGroup (for example "0-4") and  
-// d.population (a number)
-//
-function updateXScaleDomain(data) {
-    var values = data["ageGroups"];
-    xScale.domain(values.map(function(d) { return d.ageGroup}));
-    // for example x.domain is initialized with ["0-4", "5-9", "10-14", ... ] 
+<!-- ------------- CODA ------------- -->
+<g id="tail">
+  <rect x="173.989" y="92.2574" width="13.9589" height="36.5317"
+        rx="6.97944" fill="#FCC058"/>
+</g>
+
+<!-- corpo e zampe (fuori dai gruppi pilotati) -->
+<rect x="52.9147" y="130.992" width="140.586" height="41.5093" rx="20.7546" fill="#FCC058"/>
+<rect width="13.9589" height="42.182" rx="6.97944"
+      transform="matrix(-1 0 0 1 79.6456 161.255)" fill="#FCC058"/>
+<rect width="13.9589" height="37.1116" rx="6.97944"
+      transform="matrix(-1 0 0 1 97.4032 161.255)" fill="#FCC058"/>
+<rect width="13.9589" height="42.182" rx="6.97944"
+      transform="matrix(-1 0 0 1 163.017 161.255)" fill="#FCC058"/>
+<rect width="13.9589" height="37.1116" rx="6.97944"
+      transform="matrix(-1 0 0 1 180.774 161.255)" fill="#FCC058"/>
+
+<!-- stellina decorativa -->
+<path d="M183.322 156.164L183.413 153.664L181.299 155.005L180.754 154.051L182.981 152.891L180.754 151.732L181.299 150.778L183.413 152.119L183.322 149.619H184.413L184.322 152.119L186.436 150.778L186.981 151.732L184.754 152.891L186.981 154.051L186.436 155.005L184.322 153.664L184.413 156.164H183.322Z"
+      fill="black"/>
+`;
+
+d3.select('#cat').html(rawSvg);
+
+// ---------------------------------------------------------------------------
+// 2.  Utility
+// ---------------------------------------------------------------------------
+const slider2scale = (v, variable) => {
+  switch (variable) {
+    case 'ear':  return d3.scaleLinear().domain([1, 100]).range([0.6, 1.5])(v); // orecchie
+    case 'eye':  return d3.scaleLinear().domain([1, 100]).range([0.6, 1.5])(v); // occhi
+    case 'head': return d3.scaleLinear().domain([1, 100]).range([0.8, 1.1])(v); // testa
+    case 'tail': return d3.scaleLinear().domain([1, 100]).range([0.5, 1.8])(v); // coda
+    default:     return d3.scaleLinear().domain([1, 100]).range([0.5, 1.5])(v);
+  }
+};
+
+// Bounding-box → ancoraggi aggiornati in tempo reale
+function anchors () {
+  const head     = d3.select('#head').node().getBBox();
+  const tail     = d3.select('#tail').node().getBBox();
+  const earLeft  = d3.select('#earLeft').node().getBBox();
+  const earRight = d3.select('#earRight').node().getBBox();
+
+  const headTopY = head.y; // bordo superiore della testa
+
+  return {
+    headCenter : [head.x + head.width  / 2, head.y + head.height / 2],
+    headTop    : [head.x + head.width  / 2, headTopY],
+    headJoint  : [head.x + head.width  / 2, head.y + head.height],   // base testa
+    tailJoint  : [tail.x + tail.width  / 2, tail.y + tail.height],   // base coda
+    earLeft    : [earLeft.x  + earLeft.width  / 2, earLeft.y  + earLeft.height],
+    earRight   : [earRight.x + earRight.width / 2, earRight.y + earRight.height]
+  };
 }
 
-function updateYScaleDomain(data){
-    var values = data["ageGroups"];
-    yScale.domain([0, d3.max(values, function(d) { return d.population; })]);
+// Trasforma: “scala attorno al punto (ax, ay)”
+function pivot (sel, [ax, ay], s) {
+  sel.attr('transform', `translate(${ax - ax * s},${ay - ay * s}) scale(${s})`);
 }
 
-function updateAxes(){
-    // ".y.axis" selects elements that have both classes "y" and "axis", that is: class="y axis"
-    svg.select(".y.axis").transition().duration(updateTime).call(yAxis);
-    svg.select(".x.axis").transition().duration(updateTime).call(xAxis);
-}
+// ---------------------------------------------------------------------------
+// 3.  Collega gli slider (ancoraggi ricalcolati on-the-fly)
+// ---------------------------------------------------------------------------
+d3.select('#sl-eye').on('input', e => {
+  const A = anchors();
+  pivot(
+    d3.select('#eyes'),
+    A.headCenter,
+    slider2scale(+e.target.value, 'eye')
+  );
+});
 
-function drawAxes(){
+d3.select('#sl-head').on('input', e => {
+  const A = anchors();
+  pivot(
+    d3.select('#head'),
+    A.headJoint,
+    slider2scale(+e.target.value, 'head')
+  );
+});
 
-    // draw the x-axis
-    //
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+d3.select('#sl-tail').on('input', e => {
+  const A = anchors();
+  pivot(
+    d3.select('#tail'),
+    A.tailJoint,
+    slider2scale(+e.target.value, 'tail')
+  );
+});
 
-    // draw the y-axis
-    //
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis);
+d3.select('#sl-ear').on('input', e => {
+  const A = anchors();
+  const scale = slider2scale(+e.target.value, 'ear');
+  pivot(d3.select('#earLeft'), A.earLeft, scale);
+  pivot(d3.select('#earRight'), A.earRight, scale);
+  });
 
-    // add a label along the y-axis
-    //
-    svg.append("text")
-       .attr("transform", "rotate(-90)")
-       .attr("y", 15)
-       .attr("font-size","15px")
-       .style("text-anchor", "end")
-       .text("Population (thousands)");
-}
-
-// Parameter data is the object containing the values for a specific year
-// it has two fields: data.year (a number) and data.ageGroups (an array).
-// Each element d of data.ageGroups[] has d.ageGroup (for example "0-4") and  
-// d.population (a number)
-//
-function updateDrawing(data){
-
-    var year = data["year"];
-    var values = data["ageGroups"];
-
-    // Data join: function(d) is the key to recognize the right bar
-    var bars = svg.selectAll(".bar").data(values, function(d){return d.ageGroup});
-
-    // Exit clause: Remove elements
-    bars.exit().remove();
-
-    // Enter clause: add new elements
-    //
-    bars.enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d) { return xScale(d.ageGroup); })
-        .attr("y", function(d) { return yScale(d.population); })
-        .attr("width", xScale.bandwidth())
-        .attr("height", function(d) { return height - yScale(d.population); });
-
-    // Enter + Update clause: update y and height
-    //
-    bars.transition().duration(updateTime)
-        .attr("x", function(d) { return xScale(d.ageGroup); })
-        .attr("y", function(d) { return yScale(d.population); })
-        .attr("width", xScale.bandwidth())
-        .attr("height", function(d) { return height - yScale(d.population); });
-
-    // Data join for year
-    // ".year" selects all elements with class="year"
-    //
-    var yearNode = svg.selectAll(".year").data([year]);
-
-    // Enter year
-    // Merge with update selection so text is set even on the first draw
-    yearNode.enter()
-        .append("text")
-        .attr("class", "year")
-        .attr("x", width - margin.right)
-        .attr("y", margin.top)
-        .merge(yearNode)
-        .text(function(d){ return d });
-
-}
-
-function redraw(data) {
-    updateXScaleDomain(data);
-    updateYScaleDomain(data);
-    updateAxes();
-    updateDrawing(data);
-}
-
-d3.json("data/dataset.json")
-	.then(function(data) {
-
-    	// Drawing axes and initial drawing
-    	//
-        updateYScaleDomain(data[0]);
-        updateXScaleDomain(data[0]);
-        drawAxes();
-    	updateDrawing(data[0]);
-
-    	var counter = 0;
-    	setInterval(function(){
-       		if (data[counter+1]){
-           		counter++;
-           		redraw(data[counter]);
-       		}
-    	}, delayTime)
-   	})
-	.catch(function(error) {
-		console.log(error); // Some error handling here
-  	});
-
+// ---------------------------------------------------------------------------
+// 4.  Inizializzazione coerente con i valori degli slider
+// ---------------------------------------------------------------------------
+(function init () {
+  // testa, occhi, coda
+  ['head', 'eye', 'tail', 'ear'].forEach(variable => {
+      const slider = d3.select(`#sl-${variable}`);
+      const sel = d3.select(`#${variable}`);
+      const anchor = anchors()[`${variable}Joint`] || anchors()[`${variable}Center`];
+      // inizializza gli slider
+      slider.property('value', 50);
+      // inizializza le scale
+    pivot(sel, anchor, slider2scale(+slider.value, variable));
+  });
+})();

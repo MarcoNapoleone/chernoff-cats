@@ -1,22 +1,72 @@
-.bar {
-    fill: steelblue;
-}
 
-.bar:hover {
-    fill: brown;
-}
+  :root{
+    --cat-yellow:#FCC058;
+  }
 
-.axis, .values {
-    font: 11px sans-serif;
-}
+  body{
+    font-family:sans-serif;
+    margin:0;
+    padding:2rem;
+    background:#fafafa;
+  }
 
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
+  /* ---------------- UI layout ---------------- */
+  #ui{
+    display:grid;
+    grid-template-columns:max-content 1fr max-content; /* etichette | slider | valore */
+    gap:.5rem 1rem;
+    align-items:center;
+    width:26rem;
+  }
 
-.x.axis path {
-    display: none;
-}
+  /* ---------------- slider giallo ---------------- */
+  input[type=range]{
+    width:100%;
+    /* modern browsers */
+    accent-color:var(--cat-yellow);
+    /* firefox <98 cade sul fallback default */
+    height:8px;
+    cursor:pointer;
+    background:transparent;
+  }
+  /* webkit */
+  input[type=range]::-webkit-slider-runnable-track{
+    height:8px;
+    border-radius:4px;
+    background:var(--cat-yellow);
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:var(--cat-yellow);
+    border:2px solid #fff;
+    margin-top:-4px;          /* centra il thumb sulla track */
+  }
+  /* firefox */
+  input[type=range]::-moz-range-track{
+    height:8px;
+    border-radius:4px;
+    background:var(--cat-yellow);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:var(--cat-yellow);
+    border:2px solid #fff;
+  }
+
+  /* numerino */
+  .value{
+    font-variant-numeric:tabular-nums;
+    min-width:2.2ch;
+    text-align:right;
+  }
+
+  svg{
+    border:1px solid #ddd;
+    display:block;
+    margin-bottom:1.5rem;
+  }

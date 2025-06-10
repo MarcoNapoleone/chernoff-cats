@@ -1,72 +1,102 @@
 [
   {
-    "city": "Roma",
-    "longevity": 15,
-    "density": 120,
-    "avgKittens": 4,
-    "vetVisitsPerYear": 3
+    "city": "Rome",
+    "lat": 41.9028,
+    "lon": 12.4964,
+    "ear_length": 8,
+    "eye_width": 5,
+    "head_size": 6,
+    "tail_length": 7,
+    "color": "#d4a0ff"
   },
   {
-    "city": "Milano",
-    "longevity": 14,
-    "density": 150,
-    "avgKittens": 3.5,
-    "vetVisitsPerYear": 4
+    "city": "Milan",
+    "lat": 45.4642,
+    "lon": 9.19,
+    "ear_length": 6,
+    "eye_width": 4,
+    "head_size": 5,
+    "tail_length": 8,
+    "color": "#77dd77"
   },
   {
-    "city": "Napoli",
-    "longevity": 13,
-    "density": 130,
-    "avgKittens": 5,
-    "vetVisitsPerYear": 2
+    "city": "Naples",
+    "lat": 40.8518,
+    "lon": 14.2681,
+    "ear_length": 7,
+    "eye_width": 6,
+    "head_size": 5,
+    "tail_length": 6,
+    "color": "#aec6cf"
   },
   {
-    "city": "Torino",
-    "longevity": 16,
-    "density": 100,
-    "avgKittens": 3,
-    "vetVisitsPerYear": 3
+    "city": "Turin",
+    "lat": 45.0703,
+    "lon": 7.6869,
+    "ear_length": 5,
+    "eye_width": 5,
+    "head_size": 4,
+    "tail_length": 5,
+    "color": "#ffb347"
   },
   {
     "city": "Palermo",
-    "longevity": 12,
-    "density": 110,
-    "avgKittens": 4.5,
-    "vetVisitsPerYear": 2.5
+    "lat": 38.1157,
+    "lon": 13.3615,
+    "ear_length": 9,
+    "eye_width": 7,
+    "head_size": 7,
+    "tail_length": 9,
+    "color": "#ffb7ce"
   },
   {
-    "city": "Genova",
-    "longevity": 17,
-    "density": 90,
-    "avgKittens": 3.8,
-    "vetVisitsPerYear": 3.2
+    "city": "Genoa",
+    "lat": 44.4056,
+    "lon": 8.9463,
+    "ear_length": 5,
+    "eye_width": 6,
+    "head_size": 5,
+    "tail_length": 6,
+    "color": "#b39eb5"
   },
   {
     "city": "Bologna",
-    "longevity": 15.5,
-    "density": 95,
-    "avgKittens": 4.2,
-    "vetVisitsPerYear": 3.5
+    "lat": 44.4949,
+    "lon": 11.3426,
+    "ear_length": 6,
+    "eye_width": 5,
+    "head_size": 6,
+    "tail_length": 7,
+    "color": "#cff27e"
   },
   {
-    "city": "Firenze",
-    "longevity": 14.5,
-    "density": 105,
-    "avgKittens": 3.6,
-    "vetVisitsPerYear": 3
+    "city": "Florence",
+    "lat": 43.7696,
+    "lon": 11.2558,
+    "ear_length": 7,
+    "eye_width": 4,
+    "head_size": 6,
+    "tail_length": 8,
+    "color": "#b19cd9"
   },
   {
-    "city": "Venezia",
-    "longevity": 16.2,
-    "density": 80,
-    "avgKittens": 3.9,
-    "vetVisitsPerYear": 2.8
+    "city": "Bari",
+    "lat": 41.1171,
+    "lon": 16.8719,
+    "ear_length": 6,
+    "eye_width": 5,
+    "head_size": 5,
+    "tail_length": 7,
+    "color": "#fdfd96"
   },
   {
-    "city": "Verona",
-    "longevity": 15.8,
-    "density": 85,
-    "avgKittens": 4.1,
-    "vetVisitsPerYear": 3.1
+    "city": "Venice",
+    "lat": 45.4408,
+    "lon": 12.3155,
+    "ear_length": 5,
+    "eye_width": 7,
+    "head_size": 5,
+    "tail_length": 6,
+    "color": "#cfcfc4"
   }
 ]

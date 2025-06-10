@@ -3,7 +3,7 @@
 
 Promise.all([
   d3.json('data/cats.json'),
-  d3.json('data/italy.geojson')
+  //d3.json('data/italy.geojson')
 ])
   .then(([data, italy]) => {
     if (window.initViz) {
