@@ -1,84 +1,85 @@
+:root {
+  --cat-yellow: #fc9b31;
+}
 
-  :root{
-    --cat-yellow:#fc9b31;
-  }
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background: #fafafa;
+}
 
-  body{
-    font-family:sans-serif;
-    margin:0;
-    padding:2rem;
-    background:#fafafa;
-  }
+/* ---------------- UI layout ---------------- */
+#ui {
+  display: grid;
+  gap: 0.5rem 1rem;
+  width: 16rem;
+}
 
-  /* ---------------- UI layout ---------------- */
-  #ui{
-    display:grid;
-    gap:.5rem 1rem;
-    width:16rem;
-  }
+/* ---------------- slider stile Firefox su tutti i browser ---------------- */
+input[type=range] {
+  height: 8px;
+  cursor: pointer;
+  accent-color: #FC9B31FF; /* fallback per browser compatibili */
+    background-color: #FBB262; /* colore di sfondo per i browser che non supportano accent-color */
+  border-radius: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+}
 
-  /* ---------------- slider giallo ---------------- */
-  input[type=range]{
-    /* modern browsers */
-    accent-color:var(--cat-yellow);
-    /* firefox <98 cade sul fallback default */
-    height:8px;
-    cursor:pointer;
-    background:transparent;
-  }
-  /* webkit */
-  input[type=range]::-webkit-slider-runnable-track{
-    height:8px;
-    border-radius:4px;
-    background:var(--cat-yellow);
-  }
-  input[type=range]::-webkit-slider-thumb{
-    -webkit-appearance:none;
-    width:16px;
-    height:16px;
-    border-radius:50%;
-    background:var(--cat-yellow);
-    border:2px solid #fff;
-  }
-  /* firefox */
-  input[type=range]::-moz-range-track{
-    height:8px;
-    border-radius:4px;
-    background:var(--cat-yellow);
-  }
-  input[type=range]::-moz-range-thumb{
-    width:16px;
-    height:16px;
-    border-radius:50%;
-    background:var(--cat-yellow);
-    border:2px solid #fff;
-  }
+/* Track comune */
+input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-moz-range-track {
+  height: 8px;
+  border-radius: 4px;
+  background-color: #FBB262;
+}
 
+/* Thumb comune */
+input[type=range]::-webkit-slider-thumb,
+input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FC9B31FF;
+  border: 3px solid #fff;
+  cursor: pointer;
+  margin-top: -4px; /* solo per WebKit per allineare con track */
+}
 
-  svg{
-    border:1px solid #ddd;
-    display:block;
-    border-radius: 16px;
-    margin-bottom:1.5rem;
-  }
+/* Fix per WebKit */
+input[type=range]::-webkit-slider-thumb {
+  position: relative;
+  z-index: 2;
+}
 
-  /* footer in the bottom */
-  footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    padding:1rem 0;
-    background:#fafafa;
-    border-top:1px solid #ddd;
-    text-align:center;
-    font-size:.8rem;
-    color:#666;
-    font-family:monospace;
-    z-index:100;
-    box-shadow:0 -2px 4px rgba(0,0,0,.1); 
-  }
+/* Spacing */
+svg {
+  border: 1px solid #ddd;
+  display: block;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+}
 
-  .footer-placeholder {
-    height:rem;
-  }
+/* footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 0;
+  background: #fafafa;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  font-family: monospace;
+  z-index: 100;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-placeholder {
+  height: 1rem; /* fix height unit */
+}
