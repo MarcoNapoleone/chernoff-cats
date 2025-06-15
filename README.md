@@ -2,6 +2,9 @@
 
 This project visualizes multivariate data about cat populations in Italian cities using Chernoff Cat glyphs. Each part of the cat (ears, eyes, head, tail) encodes a different demographic variable, allowing for intuitive comparison across cities and regions.
 
+![Alt text](./svg-cat-infoviz.svg)
+
+
 ## Online Demo
 You can view the live demo of the Chernoff Cats visualization [here](https://chernoff-cats.web.app/).
 
@@ -31,4 +34,4 @@ You can view the live demo of the Chernoff Cats visualization [here](https://che
 
 ## Credits
 
-Created by [Marco Napoleone](https://github.com/MarcoNapoleone) for INFOVIS 2025, Roma Tre University.
+Created by [Marco Napoleone](https://github.com/MarcoNapoleone) for INFOVIZ 2025, Roma Tre University.
